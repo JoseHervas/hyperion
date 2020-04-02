@@ -1,0 +1,6 @@
+__pycache__
+config
+env
+db.sqlite3
+sentence_tokenizer.pickle
+.vscode

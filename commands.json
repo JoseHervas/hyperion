@@ -1,0 +1,28 @@
+{
+	"Ajustar conf rate":{
+		"Sentences":
+			[
+				"Cambia el nivel de confianza de tus respuestas al 0.65",
+				"Ajusta el nivel de confianza al 0.3",
+				"Cambia el nivel de confianza al 0.40",
+				"Sube el nivel de confianza al 0.40",
+				"Baja el nivel de confianza al 0.86"
+			],
+		"Responses": 
+			[
+				"Hecho.",
+				"Ajustando nivel de confianza de las respuestas.",
+				"Muy bien. Voy a ello."
+			]
+	}, 
+	"Investigar username":{
+		"Sentences":
+			[
+				"Investiga a "
+			],
+		"Responses": 
+			[
+				"Listo! Si necesitas cualquier otra cosa sólo tienes que pedirlo"
+			]
+	}
+}
