@@ -7,5 +7,7 @@ def handle_command(command, mssg, telegramClient, chat_id, bot):
 		bot_manager.change_conf_rate(mssg, telegramClient, chat_id)
 	if (command == 'Investigar username'):
 		userfinder.check_username(mssg, telegramClient, chat_id)
+	if (command == 'Aprender nuevo mensaje'):
+		bot_manager.learn_new_response(mssg, bot)
 
 

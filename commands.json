@@ -24,5 +24,15 @@
 			[
 				"Listo! Si necesitas cualquier otra cosa sólo tienes que pedirlo"
 			]
+	}, 
+	"Aprender nuevo mensaje":{
+		"Sentences":
+			[
+				"Cuando te digan 'hola' tienes que responder 'buenos dias!'"
+			],
+		"Responses": 
+			[
+				"Gracias por enseñarme!"
+			]
 	}
 }
