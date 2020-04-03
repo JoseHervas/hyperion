@@ -8,6 +8,6 @@ def handle_command(command, mssg, telegramClient, chat_id, bot):
 	if (command == 'Investigar username'):
 		userfinder.check_username(mssg, telegramClient, chat_id)
 	if (command == 'Aprender nuevo mensaje'):
-		bot_manager.learn_new_response(mssg, bot)
+		bot_manager.learn_new_response(mssg, bot, telegramClient, chat_id,)
 
 

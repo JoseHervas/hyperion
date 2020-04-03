@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 
 # Configuration
 import json
@@ -26,7 +26,8 @@ bot = ChatBot(
     logic_adapters=[
         'chatterbot.logic.BestMatch'
     ],
-    database_uri='sqlite:///db.sqlite3'
+    database_uri='sqlite:///db.sqlite3',
+    read_only=True
 )
 
 # Initial training (if needed)
@@ -61,6 +62,6 @@ def handle_message(message):
 # This will attach the handle_message fuction to every message sent by Telegram
 telegram.set_update_listener(handle_message)
 
-while True:
-    telegram.polling(none_stop=True)
+
+telegram.polling(none_stop=True)
 

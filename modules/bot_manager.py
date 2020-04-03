@@ -17,12 +17,16 @@ def change_conf_rate(mssg, telegramClient, chat_id):
 		except:
 			return False
 
-def learn_new_response(mssg, bot):
+def learn_new_response(mssg, bot, telegramClient, chat_id,):
 	"""
 	Finds the input and the output from the mssg argument by searching for double quotation marks 
 	(1st capturing group is the input, 2nd is the output). Teaches the bot the assotiation between 
 	those menssages.
 	"""
-	input_mssg = re.search(r'([\"])(?:(?=(\\?))\2.)*?\1', mssg.text).group(0).replace('"',"")
-	output_mssg = re.search(r'([\"])(?:(?=(\\?))\2.)*?\1', mssg.text).group(1).replace('"',"")
-	bot.learn_response(Statement(output_mssg), Statement(input_mssg))
+	texts=re.findall(r'\"(.+?)\"',mssg.text)
+	if (len(texts) > 0):
+		input_mssg = texts[0].replace('"',"").strip()
+		output_mssg = texts[1].replace('"',"").strip()
+		bot.learn_response(Statement(output_mssg), Statement(input_mssg))
+	else:
+		telegramClient.send_message(chat_id, "Disculpa, podrías poner la frase que debo aprender y la frase a la que va asociada entre comillas, porfa?")
