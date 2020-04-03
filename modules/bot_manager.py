@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import json, re
 botParams = json.load(open('config/bot.json'))
 from chatterbot.conversation import Statement

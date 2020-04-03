@@ -34,5 +34,15 @@
 			[
 				"Gracias por enseñarme!"
 			]
+	}, 
+	"Despertar":{
+		"Sentences":
+			[
+				"Despiértame a las 12:00"
+			],
+		"Responses": 
+			[
+				"Así lo haré"
+			]
 	}
 }
