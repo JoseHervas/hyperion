@@ -1,0 +1,1 @@
+Note: the latest release of chatterbot_corpus is incorrect on spanish in several files. 
