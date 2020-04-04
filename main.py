@@ -9,7 +9,6 @@ userParams = json.load(open('config/user.json'))
 # General utils
 from sys import argv
 import random
-from utils import custom_preprocessors
 
 # Conversational engine
 from chatterbot import ChatBot
@@ -17,6 +16,8 @@ from chatterbot.comparisons import jaccard_similarity
 from chatterbot.response_selection import get_most_frequent_response
 from chatterbot.trainers import ChatterBotCorpusTrainer
 from controllers import command_handlers, msg_handlers
+from utils import custom_comparisons
+
 
 # Telegram API
 import telebot
@@ -30,9 +31,9 @@ bot = ChatBot(
         'chatterbot.logic.BestMatch'
     ],
     preprocessors=[
-        custom_preprocessors.skip_name
+        'utils.custom_preprocessors.skip_name'
     ],
-    statement_comparison_function=jaccard_similarity,
+    statement_comparison_function=custom_comparisons.jaccard,
     response_selection_method=get_most_frequent_response,
     database_uri='sqlite:///db.sqlite3',
     read_only=True
