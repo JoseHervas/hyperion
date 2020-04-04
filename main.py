@@ -3,17 +3,20 @@
 # Configuration
 import json
 apiParams = json.load(open('config/apis.json'))
-available_commands = json.load(open('commands.json'))
+available_commands = json.load(open('commands.json', encoding='utf-8'))
 userParams = json.load(open('config/user.json'))
 
 # General utils
 from sys import argv
 import random
+from utils import custom_preprocessors
 
 # Conversational engine
 from chatterbot import ChatBot
+from chatterbot.comparisons import jaccard_similarity 
+from chatterbot.response_selection import get_most_frequent_response
 from chatterbot.trainers import ChatterBotCorpusTrainer
-from controllers import command_handlers, msg_handlers, custom_preprocessors
+from controllers import command_handlers, msg_handlers
 
 # Telegram API
 import telebot
@@ -21,11 +24,16 @@ telegram = telebot.TeleBot(apiParams['Telegram']['API-key'])
 
 # Arise, my champion! - Whitemane
 bot = ChatBot(
-    'Terminal',
+    'Hyperion',
     storage_adapter='chatterbot.storage.SQLStorageAdapter',
     logic_adapters=[
         'chatterbot.logic.BestMatch'
     ],
+    preprocessors=[
+        custom_preprocessors.skip_name
+    ],
+    statement_comparison_function=jaccard_similarity,
+    response_selection_method=get_most_frequent_response,
     database_uri='sqlite:///db.sqlite3',
     read_only=True
 )
