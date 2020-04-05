@@ -4,3 +4,4 @@ env
 db.sqlite3*
 sentence_tokenizer.pickle
 .vscode
+command_handlers.py
