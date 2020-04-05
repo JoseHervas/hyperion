@@ -17,7 +17,6 @@ def generic_text_message(bot, message, telegramClient):
 	botParams = json.load(open('config/bot.json'))
 	chat_id = message.chat.id
 	response = bot.get_response(message.text)
-	print(response.confidence)
 	if (float(response.confidence) < float(botParams['min_confidence_rate'])):
 		response1 = 'Lo siento, no sé qué responder a este mensaje. ¿Podrías enseñarme a responder a este tipo de mensajes?' 
 		telegramClient.send_message(chat_id, response1)

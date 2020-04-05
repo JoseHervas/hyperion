@@ -16,13 +16,14 @@ class BM_external_confidence(LogicAdapter):
     def __init__(self, chatbot, **kwargs):
         super().__init__(chatbot, **kwargs)
 
-        botParams = json.load(open('config/bot.json'))
-
-        self.minimum_similarity_threshold = float(botParams['min_confidence_rate'])
-
         self.excluded_words = kwargs.get('excluded_words')
 
     def process(self, input_statement, additional_response_selection_parameters=None):
+        
+        botParams = json.load(open('config/bot.json'))
+
+        self.minimum_similarity_threshold = float(botParams['min_confidence_rate'])
+        
         search_results = self.search_algorithm.search(input_statement)
 
         # Use the input statement as the closest match if no other results are found

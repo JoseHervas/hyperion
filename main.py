@@ -7,46 +7,18 @@ available_commands = json.load(open('commands.json', encoding='utf-8'))
 userParams = json.load(open('config/user.json'))
 
 # General utils
-from sys import argv
-from pathlib import Path
 import random
 
 # Conversational engine
-from chatterbot import ChatBot
-from chatterbot.comparisons import jaccard_similarity 
-from chatterbot.response_selection import get_most_frequent_response
-from chatterbot.trainers import ChatterBotCorpusTrainer
-from controllers import command_handlers, msg_handlers
-from utils import custom_comparisons
+from utils import conversation_engine
+bot = conversation_engine.bot
 
+# Controllers
+from controllers import command_handlers, msg_handlers
 
 # Telegram API
 import telebot
 telegram = telebot.TeleBot(apiParams['Telegram']['API-key'])
-
-# Arise, my champion! - Whitemane
-bot = ChatBot(
-    'Hyperion',
-    storage_adapter='chatterbot.storage.SQLStorageAdapter',
-    logic_adapters=[
-        'utils.custom_logic_adapters.BM_external_confidence'
-    ],
-    preprocessors=[
-        'utils.custom_preprocessors.skip_name'
-    ],
-    statement_comparison_function=custom_comparisons.jaccard,
-    response_selection_method=get_most_frequent_response,
-    database_uri='sqlite:///db/db.sqlite3',
-    read_only=True
-)
-
-# Initial training (if needed)
-if ("-train" in argv):
-    print("Training the mastermind...")
-    for p in Path(".").glob("db.sqlite3*"):
-        p.unlink()
-    trainer = ChatterBotCorpusTrainer(bot)
-    trainer.train("chatterbot.corpus.spanish")
 
 # This will decide to which controller call
 def handle_message(message):
@@ -73,7 +45,7 @@ def handle_message(message):
 
 # This will attach the handle_message fuction to every message sent by Telegram
 telegram.set_update_listener(handle_message)
-
+print("Telegram client ready...")
 
 telegram.polling(none_stop=True)
 

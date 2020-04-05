@@ -3,16 +3,15 @@ from nltk import pos_tag
 from nltk.tokenize import word_tokenize
 from nltk.corpus import wordnet, stopwords
 from nltk.stem.wordnet import WordNetLemmatizer
-import string
-import unidecode
+import string, unidecode, json
 from sys import argv
-
+botParams = json.load(open('config/bot.json'))
 
 def preprocess(statementA, statementB):
 
     punctuation_table = str.maketrans(dict.fromkeys(string.punctuation))
     lemmatizer = WordNetLemmatizer()
-    stopWords = set(stopwords.words('spanish'))
+    stopWords = set(stopwords.words(botParams["language"]))
 
     # Remove accents
     statementA = unidecode.unidecode(statementA.text)
@@ -27,8 +26,8 @@ def preprocess(statementA, statementB):
     statementB = statementB.translate(punctuation_table)
 
     # Tokenize sentences
-    pos_a = pos_tag(word_tokenize(statementA, language='spanish'))
-    pos_b = pos_tag(word_tokenize(statementB, language='spanish'))
+    pos_a = pos_tag(word_tokenize(statementA, language=botParams["language"]))
+    pos_b = pos_tag(word_tokenize(statementB, language=botParams["language"]))
 
     def treebank_to_wordnet(pos):
         """
