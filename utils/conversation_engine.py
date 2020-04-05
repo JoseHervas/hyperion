@@ -3,6 +3,8 @@ from sys import argv
 from chatterbot import ChatBot
 from chatterbot.response_selection import get_most_frequent_response
 from utils import custom_comparisons
+import json
+botParams = json.load(open('config/bot.json'))
 
 # Arise, my champion! - Whitemane
 bot = ChatBot(
@@ -25,6 +27,6 @@ if ("-train" in argv):
     from chatterbot.trainers import ChatterBotCorpusTrainer
     print("Training the mastermind...")
     trainer = ChatterBotCorpusTrainer(bot)
-    trainer.train("chatterbot.corpus.spanish")
+    trainer.train("chatterbot.corpus."+botParams["language"])
 
 print("Conversational engine ready...")
