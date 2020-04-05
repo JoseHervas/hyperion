@@ -28,7 +28,8 @@
 	"Aprender nuevo mensaje":{
 		"Sentences":
 			[
-				"Cuando te digan 'hola' tienes que responder 'buenos dias!'"
+				"Cuando te digan tienes que responder",
+				"si te digo tienes que decir"
 			],
 		"Responses": 
 			[
@@ -38,7 +39,7 @@
 	"Despertar":{
 		"Sentences":
 			[
-				"Despiértame a las 12:00"
+				"Despiértame a las "
 			],
 		"Responses": 
 			[

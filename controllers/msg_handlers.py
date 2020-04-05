@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
-import json
+import json, re
 from chatterbot.comparisons import LevenshteinDistance
 from chatterbot.conversation import Statement
 
 def search_commands(message, commandList):
 	for commandName in commandList:
 		for commandString in commandList[commandName]['Sentences']:
-			Levenshtein = LevenshteinDistance.compare('self', Statement(text=commandString), Statement(text=message.text))
-			if (Levenshtein > 0.90):
+			command_without_quotes = re.sub('".*?"', '', commandString)
+			mssg_without_quotes = re.sub('".*?"', '', message.text)
+			Levenshtein = LevenshteinDistance.compare('self', Statement(text=command_without_quotes), Statement(text=mssg_without_quotes))
+			if (Levenshtein > 0.80):
 				return commandName
 	return False
 

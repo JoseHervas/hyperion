@@ -8,6 +8,7 @@ userParams = json.load(open('config/user.json'))
 
 # General utils
 from sys import argv
+from pathlib import Path
 import random
 
 # Conversational engine
@@ -28,20 +29,22 @@ bot = ChatBot(
     'Hyperion',
     storage_adapter='chatterbot.storage.SQLStorageAdapter',
     logic_adapters=[
-        'chatterbot.logic.BestMatch'
+        'utils.custom_logic_adapters.BM_external_confidence'
     ],
     preprocessors=[
         'utils.custom_preprocessors.skip_name'
     ],
     statement_comparison_function=custom_comparisons.jaccard,
     response_selection_method=get_most_frequent_response,
-    database_uri='sqlite:///db.sqlite3',
+    database_uri='sqlite:///db/db.sqlite3',
     read_only=True
 )
 
 # Initial training (if needed)
-if ("-t" in argv):
+if ("-train" in argv):
     print("Training the mastermind...")
+    for p in Path(".").glob("db.sqlite3*"):
+        p.unlink()
     trainer = ChatterBotCorpusTrainer(bot)
     trainer.train("chatterbot.corpus.spanish")
 
