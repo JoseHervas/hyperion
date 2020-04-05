@@ -10,7 +10,7 @@ def job_function(telegramClient, chat_id):
 
 sched.start()
 
-def wakeup(mssg, telegramClient, chat_id):
+def wakeup(mssg, telegramClient, chat_id, bot):
 
     hour = int(re.search(r'(\d{1,2}):', mssg.text).group().replace(":", "").strip())
     minute = int(re.search(r':(\d{1,2})', mssg.text).group().replace(":", "").strip())

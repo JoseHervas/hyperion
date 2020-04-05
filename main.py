@@ -8,6 +8,8 @@ userParams = json.load(open('config/user.json'))
 
 # General utils
 import random
+from utils import printer
+printer.print_banner()
 
 # Conversational engine
 from utils import conversation_engine

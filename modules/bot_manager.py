@@ -4,7 +4,7 @@ import json, re
 botParams = json.load(open('config/bot.json'))
 from chatterbot.conversation import Statement
 
-def change_conf_rate(mssg, telegramClient, chat_id):
+def change_conf_rate(mssg, telegramClient, chat_id, bot):
 	"""
 	This function finds the new confidence rate from the mssg argument, and edits the 
 	config/bot.json file with it
@@ -19,7 +19,7 @@ def change_conf_rate(mssg, telegramClient, chat_id):
 		except:
 			return False
 
-def learn_new_response(mssg, bot, telegramClient, chat_id,):
+def learn_new_response(mssg, telegramClient, chat_id, bot):
 	"""
 	Finds the input and the output from the mssg argument by searching for double quotation marks 
 	(1st capturing group is the input, 2nd is the output). Teaches the bot the assotiation between 

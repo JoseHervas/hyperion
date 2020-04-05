@@ -4,7 +4,7 @@ import requests, re, urllib3
 # Disabling insecure request warnings for HTTPS sites
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-def check_username(mssg, telegramClient, chat_id):
+def check_username(mssg, telegramClient, chat_id, bot):
 	"""
 	Module forked from https://github.com/tr4cefl0w/userfinder
 

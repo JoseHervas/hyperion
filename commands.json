@@ -1,49 +1,49 @@
 {
-	"Ajustar conf rate":{
-		"Sentences":
-			[
-				"Cambia el nivel de confianza de tus respuestas al 0.65",
-				"Ajusta el nivel de confianza al 0.3",
-				"Cambia el nivel de confianza al 0.40",
-				"Sube el nivel de confianza al 0.40",
-				"Baja el nivel de confianza al 0.86"
-			],
-		"Responses": 
-			[
-				"Hecho.",
-				"Ajustando nivel de confianza de las respuestas.",
-				"Muy bien. Voy a ello."
-			]
-	}, 
-	"Investigar username":{
-		"Sentences":
-			[
-				"Investiga a "
-			],
-		"Responses": 
-			[
-				"Listo! Si necesitas cualquier otra cosa sólo tienes que pedirlo"
-			]
-	}, 
-	"Aprender nuevo mensaje":{
-		"Sentences":
-			[
-				"Cuando te digan tienes que responder",
-				"si te digo tienes que decir"
-			],
-		"Responses": 
-			[
-				"Gracias por enseñarme!"
-			]
-	}, 
-	"Despertar":{
-		"Sentences":
-			[
-				"Despiértame a las "
-			],
-		"Responses": 
-			[
-				"Así lo haré"
-			]
+	"Ajustar conf rate": {
+		"Sentences": [
+			"Cambia el nivel de confianza de tus respuestas al 0.65",
+			"Ajusta el nivel de confianza al 0.3",
+			"Cambia el nivel de confianza al 0.40",
+			"Sube el nivel de confianza al 0.40",
+			"Baja el nivel de confianza al 0.86"
+		],
+		"Responses": [
+			"Hecho.",
+			"Ajustando nivel de confianza de las respuestas.",
+			"Muy bien. Voy a ello."
+		],
+		"File": "bot_manager.py",
+		"Method": "change_conf_rate"
+	},
+	"Investigar username": {
+		"Sentences": [
+			"Investiga a "
+		],
+		"Responses": [
+			"Listo! Si necesitas cualquier otra cosa sólo tienes que pedirlo"
+		],
+		"File": "userfinder.py",
+		"Method": "check_username"
+	},
+	"Aprender nuevo mensaje": {
+		"Sentences": [
+			"Cuando te digan tienes que responder",
+			"si te digo tienes que decir"
+		],
+		"Responses": [
+			"Gracias por enseñarme!"
+		],
+		"File": "bot_manager.py",
+		"Method": "learn_new_response"
+	},
+	"Despertar": {
+		"Sentences": [
+			"Despiértame a las "
+		],
+		"Responses": [
+			"Así lo haré"
+		],
+		"File": "alarm.py",
+		"Method": "wakeup"
 	}
 }
