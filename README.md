@@ -1,18 +1,19 @@
-Note: the latest release of chatterbot_corpus is incorrect on spanish in several files. 
+# Hyperion
 
-IMPLEMENTAR MI PROPIO ALGORITMO DE ELECCIÓN DEL BEST MATCH
-JACCARD INDEX PARA FRASES LARGAS
-LEVEHNSTEIN PARA FRASES CORTAS
+<p align="center">
+<img src="robot-3256109_1280.png" height="200">
+</p>
 
-AÑADIR SCRIPT SETUP.PY
-    + CREAR CONFIG FILES
-    + CREAR VENV
-    + ACTIVAR VENV
-    + INSTALAR DEPENDENCIAS
-    + AÑADIR VARIABLE PATH
-    + FLAG PARA AÑADIR MÓDULOS NUEVOS
+---
 
-DESACOPLAR CONVERSATIONAL ENGINE DEL MAIN.PY
-    - CREAR UN CONVERSATION_ENGINE.PY FILE
-    - IMPORTARLO EN LOS DOS CONTROLLERS QUE LO NECESITAN
-    - LIMPIAR EL MAIN.PY DE TODA REFERENCIA A CHATTERBOT
+A modular conversational chatbot with natural-language commands.
+
+How to use:
+
+```bash
+$ git clone https://github.com/JoseHervas/hyperion.git
+$ cd hyperion
+$ pip install -r requirements.txt
+$ python setup.py --install
+$ main.py
+```
